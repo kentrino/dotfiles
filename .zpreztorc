@@ -1,7 +1,0 @@
-zstyle ':prezto:load' pmodule \
-  'utility' \
-  'completion' \
-  'syntax-highlighting'
-
-zstyle ':prezto:module:syntax-highlighting' color 'yes'
-
