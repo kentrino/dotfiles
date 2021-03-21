@@ -20,3 +20,5 @@ autoload -Uz compinit && compinit -i
 # Starship 
 eval "$(starship init zsh)"
 
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
