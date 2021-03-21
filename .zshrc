@@ -15,6 +15,9 @@ function z_add () {
   fi
 }
 
+export LANG=en_US.UTF-8
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
 z_add 'os'
 z_add 'anyenv'
 z_add 'peco'
@@ -34,3 +37,10 @@ z_add 'rust'
 z_add 'java'
 z_add 'flutter'
 z_add 'jira'
+z_add 'jetbrains'
+z_add 'aws'
+z_add 'uuidgen'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/kento/.sdkman"
+[[ -s "/Users/kento/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/kento/.sdkman/bin/sdkman-init.sh"

@@ -128,6 +128,11 @@ inoremap <C-d> <delete>
 
 inoremap <C-k> <C-r>=<SID>kill_line()<CR>
 
+" <Alt-F>
+inoremap ƒ <Esc>lwi
+" <Alt-B>
+inoremap ∫ <Esc>bi
+
 function! s:kill_line()
   let [text_before_cursor, text_after_cursor] = s:split_line_text_at_cursor()
   if len(text_after_cursor) == 0
