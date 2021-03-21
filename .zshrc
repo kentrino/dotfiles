@@ -1,36 +1,22 @@
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+# Enable zinit
+# https://github.com/zdharma/zinit
+source ~/.zinit/bin/zinit.zsh
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-if [ -e ~/.zshrc_vars ]; then
-  source ~/.zshrc_vars
-fi
+export PATH="$HOME/.bin:$PATH"
 
-function z_add () {
-  lib=${1:?"You have to specify a library name"}
-  lib_path="$HOME/.z_add/$lib.sh"
-  if [ -f "$lib_path" ];then
-    source "$lib_path"
-  fi
-}
+zinit light 'zsh-users/zsh-autosuggestions'
+zinit light 'zdharma/fast-syntax-highlighting'
+zinit light 'zsh-users/zsh-completions'
+zinit light 'kentrino/zsh-plugin'
+zinit load 'agkozak/zsh-z'
 
-z_add 'os'
-z_add 'anyenv'
-z_add 'peco'
-z_add 'z'
-z_add 'python'
-z_add 'ruby'
-z_add 'git'
-z_add 'direnv'
-z_add 'go'
-z_add 'editor'
-z_add 'cd_ls'
-z_add 'haskell'
-z_add 'bazel'
-z_add 'node'
-z_add 'terraform'
-z_add 'rust'
-z_add 'java'
-z_add 'flutter'
-z_add 'jira'
+# Docker command completion settings
+fpath=(~/.zsh/completion $fpath)
+
+autoload -Uz compinit && compinit -i
+
+# Starship 
+eval "$(starship init zsh)"
+

@@ -1,18 +1,10 @@
 [core]
-	excludesfile = ~/.gitignore_global
+  excludesfile = ~/.gitignore_global
 
 [user]
-	name = kentrino
-	email = kentrino@h-kento.jp
-	signingKey = A3A60735004D91924639BE45275556AD18955D2E
-
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  name = kentrino
+  email = kentrino@h-kento.jp
+  signingKey = A3A60735004D91924639BE45275556AD18955D2E
 
 [credential]
   helper = cache --timeout=8640000
@@ -27,7 +19,7 @@
   program = gpg
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
