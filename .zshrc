@@ -12,9 +12,6 @@ zinit light 'zsh-users/zsh-completions'
 zinit light 'kentrino/zsh-plugin'
 zinit load 'agkozak/zsh-z'
 
-# Docker command completion settings
-fpath=(~/.zsh/completion $fpath)
-
 autoload -Uz compinit && compinit -i
 
 # Starship 
