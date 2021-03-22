@@ -6,11 +6,11 @@ autoload -Uz _zinit
 
 export PATH="$HOME/.bin:$PATH"
 
-zinit light 'zsh-users/zsh-autosuggestions'
-zinit light 'zdharma/fast-syntax-highlighting'
-zinit light 'zsh-users/zsh-completions'
-zinit light 'kentrino/zsh-plugin'
-zinit load 'agkozak/zsh-z'
+zinit ice wait'0'; zinit load 'zsh-users/zsh-autosuggestions'
+zinit ice wait'0'; zinit load 'zdharma/fast-syntax-highlighting'
+zinit ice wait'0'; zinit load 'zsh-users/zsh-completions'
+zinit ice wait'0'; zinit load 'kentrino/zsh-plugin'
+zinit ice wait'!0'; zinit load 'agkozak/zsh-z'
 
 autoload -Uz compinit && compinit -i
 
