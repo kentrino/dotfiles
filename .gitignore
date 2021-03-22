@@ -4,9 +4,6 @@
 
 # vim
 !.vimrc
-!.dein_lazy.toml
-!.dein.toml
-!.vim
 
 # zsh
 !.zshrc
