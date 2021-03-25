@@ -6,12 +6,17 @@ autoload -Uz _zinit
 
 export PATH="$HOME/.bin:$PATH"
 
-zinit wait is-snippet as"completion" for \
+zinit wait lucid light-mode as'completion' for \
     OMZP::docker/_docker \
-    OMZP::docker-compose/_docker-compose \
     OMZP::rust/_rust \
     OMZP::cargo/_cargo \
-    OMZP::rustup/_rustup
+    OMZP::rustup/_rustup \
+    OMZP::docker-compose \
+    OMZP::yarn
+
+zinit wait lucid for \
+    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+        'zdharma/fast-syntax-highlighting'
 
 zinit wait'!0' lucid light-mode for \
     'kentrino/zsh-plugin' \
@@ -19,13 +24,9 @@ zinit wait'!0' lucid light-mode for \
 
 zinit light 'zsh-users/zsh-autosuggestions'
 
+# Should be placed last?
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
-    'zsh-users/zsh-completions' \
-    'g-plane/zsh-yarn-autocompletions'
-
-zinit wait lucid for \
-    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-        'zdharma/fast-syntax-highlighting'
+    'zsh-users/zsh-completions'
 
 # Starship 
 eval "$(starship init zsh)"
