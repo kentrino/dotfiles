@@ -21,6 +21,10 @@ let g:airline_theme='wombat'
 syntax enable
 colorscheme OceanicNext
 
+" general settings =========================================================
+" enable backspace
+set backspace=indent,eol,start
+
 " share clipboad with Mac ==================================================
 set clipboard+=unnamed
 
