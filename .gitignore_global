@@ -6,9 +6,10 @@ node_modules
 
 .gitattributes
 .envrc
+.env
 my_ruby_extension.rb
 
 npm-debug.log
 *.pyc
 .memo
-
+tmp

@@ -34,3 +34,20 @@ eval "$(starship init zsh)"
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
 bindkey '^j' autosuggest-execute
+
+export HISTSIZE=10000
+export SAVEHIST=100000
+
+function enter-container {
+    CONTAINER_NAME=$1
+    if [ -z "$CONTAINER_NAME" ]; then
+        echo "You have to specify container name."
+        exit 1
+    fi 
+    CONTAINER=$(docker ps | grep "$CONTAINER_NAME" | awk '{ print $1 }' )
+    if [ -z "$CONTAINER" ]; then
+        echo "Container not found."
+        exit 1
+    fi
+    docker exec -it $CONTAINER sh
+}
