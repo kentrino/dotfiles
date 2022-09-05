@@ -1,3 +1,21 @@
+export HISTFILE=${HOME}/.zsh_history
+# in memoery
+export HISTSIZE=1000000
+# in file for bash
+# export HISTFILESIZE=100000
+# in file
+export SAVEHIST=100000000
+
+# https://unix.stackexchange.com/questions/568907/why-do-i-lose-my-zsh-history
+# no duplicate
+setopt HIST_SAVE_NO_DUPS
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+
+# record cd
+setopt AUTO_PUSHD
+DIRSTACKSIZE=100
+
 # Enable zinit
 # https://github.com/zdharma/zinit
 source ~/.zinit/bin/zinit.zsh
@@ -34,3 +52,5 @@ eval "$(starship init zsh)"
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
 bindkey '^j' autosuggest-execute
+
+export GPG_TTY=$(tty)
