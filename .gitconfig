@@ -4,7 +4,8 @@
 [user]
   name = kentrino
   email = kentrino@h-kento.jp
-  signingKey = A3A60735004D91924639BE45275556AD18955D2E
+  # signingKey = A3A60735004D91924639BE45275556AD18955D2E
+  signingKey = 44206B654BD9AA29AF701605CA4AC40F96EE883B
 
 [credential]
   helper = cache --timeout=8640000
