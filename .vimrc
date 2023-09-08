@@ -19,7 +19,7 @@ let g:airline_theme='wombat'
 
 " color scheme =============================================================
 syntax enable
-colorscheme OceanicNext
+" colorscheme OceanicNext
 
 " general settings =========================================================
 " enable backspace
@@ -27,6 +27,9 @@ set backspace=indent,eol,start
 
 " share clipboad with Mac ==================================================
 set clipboard+=unnamed
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
 
 " tab settings =============================================================
 " tab size
