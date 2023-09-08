@@ -1,2 +1,4 @@
 *
 !starship.toml
+!git
+!git/ignore
