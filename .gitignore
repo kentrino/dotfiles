@@ -22,3 +22,7 @@
 !.hyper.js
 
 !.bin
+
+!.cargo
+!.ripgreprc
+!.tmux.conf
