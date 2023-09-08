@@ -40,8 +40,6 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-export PATH="$HOME/.bin:$PATH"
-
 zinit wait lucid light-mode as'completion' for \
     OMZP::docker/_docker \
     OMZP::docker-compose \
@@ -55,15 +53,20 @@ zinit wait lucid for \
     atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
         'zdharma/fast-syntax-highlighting'
 
-zinit wait'!0' lucid light-mode for \
+zinit wait lucid light-mode for \
     'kentrino/zsh-plugin' \
     'agkozak/zsh-z'
 
+zinit ice blockf
 zinit light 'zsh-users/zsh-autosuggestions'
+# zinit wait lucid light-mode for \
+#   atload"_zsh_autosuggest_start" \
+#       zsh-users/zsh-autosuggestions
 
-# Should be placed last?
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
     'zsh-users/zsh-completions'
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Starship 
 eval "$(starship init zsh)"
@@ -74,5 +77,35 @@ bindkey '^j' autosuggest-execute
 
 export GPG_TTY=$(tty)
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH="$HOME/.bin:$PATH"
 export PATH="$PATH:$HOME/.jetbrains-toolbox"
+
+alias vim="nvim"
+
+source "$HOME/.cargo/env"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+
+alias date='gdate'
+
+function t() {
+    if [ -n "$TMUX" ]; then
+        local SELECTED="$(tmux list-sessions | peco | cut -d : -f 1)"
+        tmux switch-client -t $SELECTED
+        return 0
+    else
+        local SELECTED="$(tmux list-sessions | peco | cut -d : -f 1)"
+        tmux attach-session -t $SELECTED
+        return 0
+    fi
+}
+
+# source "$HOME/.rye/env"
+export PATH="${PATH}:${HOME}/.krew/bin"
+
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
