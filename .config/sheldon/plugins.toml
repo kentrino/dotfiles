@@ -14,7 +14,70 @@ shell = "zsh"
 
 [plugins]
 
-# For example:
-#
-# [plugins.base16]
-# github = "chriskempson/base16-shell"
+[templates]
+# defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+# defer = { value = 'zsh-defer source "{{ file }}"', each = true }
+# debug = { value = 'echo "{{ name }}: {{ file }}"', each = true }
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit'
+
+[plugins.colors]
+inline = 'autoload -Uz colors && zsh-defer colors'
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+apply = ["defer"]
+
+# [plugins.zsh-syntax-highlighting]
+# github = "zsh-users/zsh-syntax-highlighting"
+
+[plugins.fast-syntax-highlighting]
+github = "zdharma/fast-syntax-highlighting"
+
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+
+[plugins.kubectl-completion]
+remote = "https://raw.githubusercontent.com/nnao45/zsh-kubectl-completion/master/_kubectl"
+apply = ["fpath"]
+
+[plugins.gradle-completion]
+github = "gradle/gradle-completion"
+apply = ["fpath"]
+
+[plugins.z]
+github = "agkozak/zsh-z"
+apply = ["defer"]
+
+[plugins.docker-compose]
+github = "ohmyzsh/ohmyzsh"
+branch = "master"
+use = ["plugins/docker-compose/docker-compose.plugin.zsh"]
+apply = ["defer"]
+
+[plugins.docker]
+github = "ohmyzsh/ohmyzsh"
+branch = "master"
+use = ["plugins/docker/docker.plugin.zsh"]
+apply = ["defer"]
+
+[plugins.yarn]
+github = "ohmyzsh/ohmyzsh"
+branch = "master"
+use = ["plugins/yarn/yarn.plugin.zsh"]
+apply = ["defer"]
+
+[plugins.rust]
+github = "ohmyzsh/ohmyzsh"
+branch = "master"
+use = ["plugins/rust/rust.plugin.zsh"]
+apply = ["defer"]
+
+[plugins.kentrino]
+github = "kentrino/zsh-plugin"
+rev = "19e0029"
