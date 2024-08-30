@@ -7,3 +7,5 @@
 !direnv/direnv.toml
 !direnv/_direnvrc
 !direnv/lib/use_asdf.sh
+
+!sheldon
