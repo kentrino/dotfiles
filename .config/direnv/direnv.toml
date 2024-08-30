@@ -1,0 +1,4 @@
+# does not effect
+#   see. https://github.com/direnv/direnv/issues/1189
+[global]
+load_dotenv = true
