@@ -90,6 +90,7 @@ brew "peco"
 brew "rsync"
 brew "starship"
 brew "protobuf"
+brew "sheldon"
 # brew tap shellspec/shellspec
 brew "shellspec"
 brew "stern"
