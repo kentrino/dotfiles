@@ -82,13 +82,12 @@ export PATH="$PATH:$HOME/.jetbrains-toolbox"
 
 alias vim="nvim"
 
-source "$HOME/.cargo/env"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# export SDKMAN_DIR="$HOME/.sdkman"
+# [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 
 alias date='gdate'
@@ -105,7 +104,23 @@ function t() {
     fi
 }
 
-# source "$HOME/.rye/env"
 export PATH="${PATH}:${HOME}/.krew/bin"
 
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+
+# libpq
+export PATH="/opt/homebrew/Cellar/libpq/16.0/bin:${PATH}"
+
+[ -f "/Users/kento/.ghcup/env" ] && source "/Users/kento/.ghcup/env" # ghcup-env
+
+
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/kento/.dart-cli-completion/zsh-config.zsh ]] && . /Users/kento/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
+export ANDROID_HOME=~/Library/Android/sdk
+
+# postgres
+export PATH="/opt/homebrew/Cellar/libpq/16.2_1/bin:$PATH"
