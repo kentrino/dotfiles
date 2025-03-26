@@ -5,3 +5,15 @@ command_timeout = 1000
 full_symbol = "🔋"
 charging_symbol = "⚡️"
 discharging_symbol = "💀"
+
+[git_commit]
+disabled = true
+
+[git_branch]
+disabled = false
+
+[git_status]
+disabled = true
+
+[nodejs]
+disabled = true
