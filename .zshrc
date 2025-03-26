@@ -6,22 +6,25 @@ export SAVEHIST=100000000
 
 # https://unix.stackexchange.com/questions/568907/why-do-i-lose-my-zsh-history
 setopt HIST_SAVE_NO_DUPS
-setopt INC_APPEND_HISTORY
+
+# ref:
+#   https://qiita.com/ykit00/items/94393d4c55b0b659a267
+#   https://zenn.dev/rclab/articles/present_my_zshrc
+# incompatible with INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 
-# save directory history
-setopt AUTO_PUSHD
+PATH="$PATH:/opt/homebrew/bin"
 
-# limit history size
-DIRSTACKSIZE=100
+if command -v sheldon &>/dev/null; then
+    eval "$(sheldon source)"
+fi
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(sheldon source)"
-eval "$(starship init zsh)"
+if command -v starship &>/dev/null; then
+    eval "$(starship init zsh)"
+fi
 
-export PATH="$HOME/.local/bin:$PATH"
+# setting for per-directory-history
+HISTORY_START_WITH_GLOBAL=true
 
-# Added by Windsurf
-export PATH="~/.codeium/windsurf/bin:$PATH"
-
-PER_DIRECTORY_HISTORY_TOGGLE='^T'
+# spell correction
+setopt correct
