@@ -1,0 +1,27 @@
+#!/usr/bin/env -S deno run --allow-run --allow-read --allow-env --allow-sys --ext=ts
+
+import "npm:zx@7.1.1/globals";
+
+$.verbose = false
+
+const url = (await $`git remote get-url origin`).stdout.trim()
+// git@github.com:upsidr/bank-api-example.git
+
+function toHttpUrl(url: string) {
+    if (url.startsWith("git@github.com:")) {
+        const match = /git@github\.com:(.*)\/(.*)\.git/.exec(url);
+        if (!match) {
+            throw new Error(`Invalid GitHub URL: ${url}`);
+        }
+        if (match.length !== 3) {
+            throw new Error(`Invalid GitHub URL: ${url}`);
+        }
+        const [, user, repo] = match;
+        return `https://github.com/${user}/${repo}`;
+    }
+    return url
+}
+
+const prs = toHttpUrl(`${url}/pulls`)
+
+await $`open -a '/Applications/Google Chrome.app' ${prs} --args --profile-email=tachikoma@h-kento.jp`

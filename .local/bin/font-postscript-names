@@ -1,0 +1,16 @@
+#!/opt/homebrew/bin/python3.13
+
+import fontforge
+import argparse
+
+parser = argparse.ArgumentParser(description="Get font postscript names")
+parser.add_argument("path", help="Path to the font file")
+args = parser.parse_args()
+
+font_collection = fontforge.fontsInFile(args.path)
+
+# Get postscript names for each font in collection
+for font_index in range(len(font_collection)):
+    font = fontforge.open(f"{args.path}({font_index})")
+    print(f"Font {font_index}: {font.fontname}")
+    font.close()

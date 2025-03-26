@@ -25,3 +25,5 @@
 !.tmux.conf
 !.ripgreprc
 !Brewfile
+
+!.local/

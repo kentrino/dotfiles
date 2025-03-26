@@ -1,0 +1,38 @@
+#!/usr/bin/env -S deno run --allow-run --allow-read --allow-env --ext=ts
+
+import { $ } from "https://deno.land/x/zx_deno@1.2.2/mod.mjs";
+import * as z from "https://deno.land/x/zod@v3.24.1/mod.ts"
+import { parseArgs } from "node:util"
+import { argv as argv } from 'node:process';
+
+$.verbose = false
+
+const Args = z.object({
+    branch: z.string(),
+})
+
+main()
+
+async function main() {
+    const rawArg = parseArgs({
+        args: argv,
+        options: {
+            branch: {
+                type: "string",
+                short: "b",
+                long: "branch"
+            },
+        },
+        allowPositionals: true
+    })
+    const arg = Args.parse(rawArg.values)
+    await run(arg)
+}
+
+async function run(args: z.infer<typeof Args>) {
+    const defaultBranch = (await $`git remote show origin | grep 'HEAD branch' | cut -d' ' -f5`).stdout.trim()
+    const mergeBase = (await $`git merge-base ${args.branch} --fork-point ${defaultBranch}`).stdout.trim()
+    const diff = (await $`git diff ${mergeBase}^..${args.branch}`).stdout
+    console.log(diff)
+}
+
