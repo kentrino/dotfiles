@@ -1,37 +1,34 @@
-[core]
-  excludesfile = ~/.gitignore_global
-
 [user]
-  name = kentrino
-  email = kentrino@h-kento.jp
-  signingKey = 44206B654BD9AA29AF701605CA4AC40F96EE883B
+name = kentrino
+email = kentrino@h-kento.jp
+signingKey = 44206B654BD9AA29AF701605CA4AC40F96EE883B
 
 [credential]
-  helper = cache --timeout=8640000
+helper = cache --timeout=8640000
 
 [push]
-  default = current
+default = current
 
 [commit]
-  gpgSign = true
+gpgSign = true
 
 [gpg]
-	program = /opt/homebrew/bin/gpg
+program = /opt/homebrew/bin/gpg
 
 [filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-	required = true
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
 
 [checkout]
-	defaultRemote = origin
+defaultRemote = origin
 
 [init]
-  defaultBranch = main
+defaultBranch = main
 
 [pull]
-  ff = only
+ff = only
 
-# [url "git@github.com:"]
-# 	insteadOf = https://github.com/
+[url "git@github.com:"]
+insteadOf = https://github.com/

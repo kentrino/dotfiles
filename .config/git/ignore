@@ -1,2 +1,17 @@
 node_modules
 **/node_modules
+
+*~
+.DS_Store
+.idea/*
+.*.swp
+
+.gitattributes
+.envrc
+my_ruby_extension.rb
+
+npm-debug.log
+*.pyc
+.memo
+
+.vscode/settings.json
