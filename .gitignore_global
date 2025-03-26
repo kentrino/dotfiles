@@ -12,3 +12,4 @@ npm-debug.log
 *.pyc
 .memo
 
+.vscode/settings.json
