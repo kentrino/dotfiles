@@ -23,32 +23,32 @@ defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file 
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
 
-[plugins.compinit]
-inline = 'autoload -Uz compinit && zsh-defer compinit'
-
-[plugins.colors]
-inline = 'autoload -Uz colors && zsh-defer colors'
-
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
-apply = ["defer"]
 
 # [plugins.zsh-syntax-highlighting]
 # github = "zsh-users/zsh-syntax-highlighting"
 
 [plugins.fast-syntax-highlighting]
 github = "zdharma/fast-syntax-highlighting"
+apply = ["defer"]
 
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
+apply = ["defer"]
+
+[plugins.per-directory-history]
+github = "jimhester/per-directory-history"
+use = ["per-directory-history.plugin.zsh"]
+apply = ["defer"]
 
 [plugins.kubectl-completion]
 remote = "https://raw.githubusercontent.com/nnao45/zsh-kubectl-completion/master/_kubectl"
-apply = ["fpath"]
+apply = ["fpath", "defer"]
 
 [plugins.gradle-completion]
 github = "gradle/gradle-completion"
-apply = ["fpath"]
+apply = ["fpath", "defer"]
 
 [plugins.z]
 github = "agkozak/zsh-z"
@@ -80,4 +80,13 @@ apply = ["defer"]
 
 [plugins.kentrino]
 github = "kentrino/zsh-plugin"
-rev = "19e0029"
+rev = "db84f93"
+# local = "..../shell/zsh-plugin"
+use = ["kentrino.zsh"]
+apply = ["defer"]
+
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit'
+
+[plugins.colors]
+inline = 'autoload -Uz colors && zsh-defer colors'
